@@ -1,0 +1,30 @@
+{
+  "name": "cli-list-select",
+  "version": "0.0.1",
+  "description": "Simple command line interactive list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryBogomolov/cli-list-select.git"
+  },
+  "keywords": [
+    "list",
+    "console",
+    "cli",
+    "select",
+    "prompt",
+    "menu"
+  ],
+  "author": "Dmitry Bogomolov",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0"
+  },
+  "bugs": {
+    "url": "https://github.com/DmitryBogomolov/cli-list-select/issues"
+  },
+  "homepage": "https://github.com/DmitryBogomolov/cli-list-select#readme"
+}
