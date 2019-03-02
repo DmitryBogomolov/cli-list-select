@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const list = require('..');
 
 console.log('Go');

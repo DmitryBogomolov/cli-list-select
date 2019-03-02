@@ -113,7 +113,7 @@ function printList(items, options = {}) {
             cin.off('keypress', handle);
             cin.setRawMode(false);
             clearList(lineCount);
-        };``
+        };
         const close = (status) => {
             dispose();
             resolve({ status, index: itemIndex, tags: tags.data() });

@@ -4,7 +4,8 @@
   "description": "Simple command line interactive list",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/DmitryBogomolov/cli-list-select/issues"
   },
-  "homepage": "https://github.com/DmitryBogomolov/cli-list-select#readme"
+  "homepage": "https://github.com/DmitryBogomolov/cli-list-select#readme",
+  "devDependencies": {
+    "eslint": "^5.15.0"
+  }
 }
