@@ -289,8 +289,9 @@ describe('list', () => {
             mockClearLine.mockClear();
             emitReturn();
 
-            return promise.then(() => {
+            return promise.then(({ checks }) => {
                 expectClearedLines(3);
+                expect(checks).toEqual([0, 1]);
             });
         });
 
@@ -313,8 +314,9 @@ describe('list', () => {
             mockClearLine.mockClear();
             emitReturn();
 
-            return promise.then(() => {
+            return promise.then(({ checks }) => {
                 expectClearedLines(3);
+                expect(checks).toEqual([1]);
             });
         });
 
@@ -338,8 +340,9 @@ describe('list', () => {
             mockClearLine.mockClear();
             emitReturn();
 
-            return promise.then(() => {
+            return promise.then(({ checks }) => {
                 expectClearedLines(3);
+                expect(checks).toEqual(0);
             });
         });
 
@@ -364,8 +367,9 @@ describe('list', () => {
             mockClearLine.mockClear();
             emitReturn();
 
-            return promise.then(() => {
+            return promise.then(({ checks }) => {
                 expectClearedLines(3);
+                expect(checks).toEqual(NaN);
             });
         });
     });

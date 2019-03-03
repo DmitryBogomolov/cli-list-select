@@ -3,11 +3,16 @@
 const list = require('..');
 
 const items = ['A', 'B', 'C', 'D', 'E'];
+const options = {
+    index: 2,
+    singleCheck: true,
+    checks: 1,
+};
 
 console.log('Go');
-list(items).then(
+list(items, options).then(
     ({ checks }) => {
-        console.log(checks.map(i => items[i]).join(', '));
+        console.log(items[checks]);
     },
     (err) => {
         console.error(err);
