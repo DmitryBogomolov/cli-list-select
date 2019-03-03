@@ -11,7 +11,7 @@ rl.emitKeypressEvents(cin);
 function renderList(items, printItem, focus, tags) {
     let lineCount = 0;
     items.forEach((item, i) => {
-        const lines = printItem(item, i, tags.has(i)).split('\n');
+        const lines = String(printItem(item, i, tags.has(i))).split('\n');
         lineCount += lines.length;
         const focusCh = i === focus ? '-' : ' ';
         const tagCh = tags.has(i) ? '*' : ' ';
