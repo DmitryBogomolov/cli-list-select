@@ -130,7 +130,7 @@ describe('list', () => {
     });
 
     describe('options', () => {
-        it('set initial focus', () => {
+        it('set initial index', () => {
             const promise = list(['a', 'b', 'c'], {
                 index: 1,
             });
@@ -150,7 +150,7 @@ describe('list', () => {
 
         it('set initial checks (multiple)', () => {
             const promise = list(['a', 'b', 'c', 'd'], {
-                tags: [0, 2, 3],
+                checks: [0, 2, 3],
             });
 
             expectPrintedLines(
@@ -162,15 +162,15 @@ describe('list', () => {
 
             emitReturn();
 
-            return promise.then(({ tags }) => {
-                expect(tags).toEqual([0, 2, 3]);
+            return promise.then(({ checks }) => {
+                expect(checks).toEqual([0, 2, 3]);
             });
         });
 
         it('set initial checks (single)', () => {
             const promise = list(['a', 'b', 'c', 'd'], {
-                singleTag: true,
-                tags: 2,
+                singleCheck: true,
+                checks: 2,
             });
 
             expectPrintedLines(
@@ -182,8 +182,8 @@ describe('list', () => {
 
             emitReturn();
 
-            return promise.then(({ tags }) => {
-                expect(tags).toEqual(2);
+            return promise.then(({ checks }) => {
+                expect(checks).toEqual(2);
             });
         });
 
@@ -196,7 +196,7 @@ describe('list', () => {
 
             const promise = list(['a', 'b', 'c', 'd'], {
                 printItem,
-                tags: [1, 3],
+                checks: [1, 3],
             });
 
             expectPrintedLines(
@@ -222,7 +222,7 @@ describe('list', () => {
     });
 
     describe('keys handling', () => {
-        it('change focus on "up"', () => {
+        it('change index on "up"', () => {
             const promise = list(['a', 'b', 'c'], {
                 index: 1,
             });
@@ -246,7 +246,7 @@ describe('list', () => {
             });
         });
 
-        it('change focus on "down"', () => {
+        it('change index on "down"', () => {
             const promise = list(['a', 'b', 'c'], {
                 index: 1,
             });
@@ -272,7 +272,7 @@ describe('list', () => {
 
         it('toggle check on "space" (on)', () => {
             const promise = list(['a', 'b', 'c'], {
-                tags: [1],
+                checks: [1],
             });
 
             mockWrite.mockClear();
@@ -296,7 +296,7 @@ describe('list', () => {
 
         it('toggle check on "space" (off)', () => {
             const promise = list(['a', 'b', 'c'], {
-                tags: [0, 1],
+                checks: [0, 1],
             });
 
             mockWrite.mockClear();
@@ -320,8 +320,8 @@ describe('list', () => {
 
         it('toggle check on "space" (on, single)', () => {
             const promise = list(['a', 'b', 'c'], {
-                tags: [1],
-                singleTag: true,
+                checks: 1,
+                singleCheck: true,
             });
 
             mockWrite.mockClear();
@@ -345,8 +345,9 @@ describe('list', () => {
 
         it('toggle check on "space" (off, single)', () => {
             const promise = list(['a', 'b', 'c'], {
-                tags: [0],
-                singleTag: true,
+                index: 1,
+                checks: 1,
+                singleCheck: true,
             });
 
             mockWrite.mockClear();
@@ -354,8 +355,8 @@ describe('list', () => {
 
             expectClearedLines(3);
             expectPrintedLines(
-                '-[ ] a',
-                ' [ ] b',
+                ' [ ] a',
+                '-[ ] b',
                 ' [ ] c',
             );
 
@@ -391,7 +392,7 @@ describe('list', () => {
             );
             expect(mock).toBeCalledWith({
                 index: 0, setIndex: expect.any(Function),
-                setTag: expect.any(Function), close: expect.any(Function),
+                toggleCheck: expect.any(Function), end: expect.any(Function),
             });
 
             mockMoveCursor.mockClear();
@@ -404,8 +405,8 @@ describe('list', () => {
         });
 
         it('allow to toggle check', () => {
-            const mock = jest.fn(({ setTag }) => {
-                setTag(2);
+            const mock = jest.fn(({ toggleCheck }) => {
+                toggleCheck(2);
             });
             const promise = list(['a', 'b', 'c'], {
                 handlers: {
@@ -424,7 +425,7 @@ describe('list', () => {
             );
             expect(mock).toBeCalledWith({
                 index: 0, setIndex: expect.any(Function),
-                setTag: expect.any(Function), close: expect.any(Function),
+                toggleCheck: expect.any(Function), end: expect.any(Function),
             });
 
             mockMoveCursor.mockClear();
@@ -437,8 +438,8 @@ describe('list', () => {
         });
 
         it('allow to close', () => {
-            const mock = jest.fn(({ close }) => {
-                close('test');
+            const mock = jest.fn(({ end }) => {
+                end('test');
             });
             const promise = list(['a', 'b', 'c'], {
                 handlers: {
@@ -450,13 +451,13 @@ describe('list', () => {
             emitKeypress({ name: 'k' });
             expect(mock).toBeCalledWith({
                 index: 0, setIndex: expect.any(Function),
-                setTag: expect.any(Function), close: expect.any(Function),
+                toggleCheck: expect.any(Function), end: expect.any(Function),
             });
 
             expectClearedLines(3);
 
-            return promise.then(({ status }) => {
-                expect(status).toEqual('test');
+            return promise.then(({ note }) => {
+                expect(note).toEqual('test');
             });
         });
     });
