@@ -95,18 +95,18 @@ function printList(items, options = {}) {
     let lineCount = 0;
     let index = verifyIndex(options.index, itemCount) ? Number(options.index) : 0;
     const checks = (options.singleCheck ? singleCheck : mutlipleChecks)(options.checks);
-    function refresh () {
+    function refresh() {
         clearList(lineCount);
         lineCount = renderList(items, printItem, index, checks);
     }
-    function setIndex (arg)  {
+    function setIndex(arg) {
         const newIndex = Number(arg);
         if (newIndex !== index && verifyIndex(newIndex, itemCount)) {
             index = newIndex;
             refresh();
         }
     }
-    function toggleCheck  (arg)  {
+    function toggleCheck(arg) {
         const newIndex = Number(arg);
         if (verifyIndex(newIndex, itemCount)) {
             checks.set(newIndex);
@@ -114,17 +114,17 @@ function printList(items, options = {}) {
         }
     }
     return new Promise((resolve, reject) => {
-        function dispose  ()  {
+        function dispose() {
             cin.off('keypress', handle);
             cin.setRawMode(false);
             clearList(lineCount);
         }
-        function end  (note)  {
+        function end(note) {
             dispose();
             resolve({ note, index, checks: checks.data() });
         }
         const handlers = Object.assign({}, defaultHandlers, options.handlers);
-        function handle  (key, data)  {
+        function handle(key, data) {
             if (data.sequence === ESC || data.sequence === CTRLC) {
                 dispose();
                 reject(new Error('Canceled'));
