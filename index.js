@@ -8,18 +8,17 @@ const CTRLC = '\u0003';
 
 rl.emitKeypressEvents(cin);
 
-function renderList(items, printItem, focus, tags) {
+function renderList(items, printItem, index, checks) {
     let lineCount = 0;
     items.forEach((item, i) => {
-        const lines = String(printItem(item, i, tags.has(i))).split('\n');
+        const isFocused = i === index;
+        const isChecked = checks.has(i);
+        const lines = String(printItem(item, i, isFocused, isChecked)).split('\n');
         lineCount += lines.length;
-        const focusCh = i === focus ? '-' : ' ';
-        const tagCh = tags.has(i) ? '*' : ' ';
-        const prefix = `${focusCh}[${tagCh}] `;
-        const dumb = ' '.repeat(prefix.length);
+        const prefix = `${isFocused ? '-' : ' '}[${isChecked ? '*' : ' '}] `;
         cout.write(`${prefix}${lines[0]}\n`);
         lines.slice(1).forEach((line) => {
-            cout.write(`${dumb}${line}\n`);
+            cout.write(`${' '.repeat(prefix.length)}${line}\n`);
         });
     });
     return lineCount;

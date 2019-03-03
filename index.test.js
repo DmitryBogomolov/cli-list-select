@@ -207,10 +207,10 @@ describe('list', () => {
                 ' [*] 0',
             );
             expect(printItem.mock.calls).toEqual([
-                ['a', 0, false],
-                ['b', 1, true],
-                ['c', 2, false],
-                ['d', 3, true],
+                ['a', 0, true, false],
+                ['b', 1, false, true],
+                ['c', 2, false, false],
+                ['d', 3, false, true],
             ]);
 
             emitReturn();
