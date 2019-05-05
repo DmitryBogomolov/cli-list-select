@@ -9,7 +9,7 @@ const options = {
     checks: 1,
 };
 
-console.log('Go');
+console.log('* Items *');
 list(items, options).then(
     ({ checks }) => {
         console.log(items[checks]);
