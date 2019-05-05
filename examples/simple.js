@@ -4,7 +4,7 @@ const list = require('..');
 
 const items = ['A', 'B', 'C', 'D', 'E'];
 
-console.log('Go');
+console.log('* Items *');
 list(items).then(
     ({ checks }) => {
         console.log(checks.map(i => items[i]).join(', '));
