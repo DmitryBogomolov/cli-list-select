@@ -1,6 +1,6 @@
 {
   "name": "cli-list-select",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple command line interactive list",
   "main": "index.js",
   "scripts": {
