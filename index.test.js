@@ -69,7 +69,7 @@ describe('list', () => {
             expectPrintedLines(
                 '-[ ] a',
                 ' [ ] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             emitReturn();
@@ -88,7 +88,7 @@ describe('list', () => {
                 '      b',
                 ' [ ] Item 2',
                 ' [ ] Item 3',
-                '     note'
+                '     note',
             );
 
             emitReturn();
@@ -109,7 +109,7 @@ describe('list', () => {
                 },
                 (err) => {
                     expect(err.message).toEqual('Canceled');
-                }
+                },
             );
         });
 
@@ -124,7 +124,7 @@ describe('list', () => {
                 },
                 (err) => {
                     expect(err.message).toEqual('Canceled');
-                }
+                },
             );
         });
     });
@@ -138,7 +138,7 @@ describe('list', () => {
             expectPrintedLines(
                 ' [ ] a',
                 '-[ ] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             emitReturn();
@@ -157,7 +157,7 @@ describe('list', () => {
                 '-[*] a',
                 ' [ ] b',
                 ' [*] c',
-                ' [*] d'
+                ' [*] d',
             );
 
             emitReturn();
@@ -177,7 +177,7 @@ describe('list', () => {
                 '-[ ] a',
                 ' [ ] b',
                 ' [*] c',
-                ' [ ] d'
+                ' [ ] d',
             );
 
             emitReturn();
@@ -204,7 +204,7 @@ describe('list', () => {
                 '     <a2>',
                 ' [*] undefined',
                 ' [ ] ',
-                ' [*] 0'
+                ' [*] 0',
             );
             expect(printItem.mock.calls).toEqual([
                 ['a', 0, true, false],
@@ -234,7 +234,7 @@ describe('list', () => {
             expectPrintedLines(
                 '-[ ] a',
                 ' [ ] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             mockMoveCursor.mockClear();
@@ -258,7 +258,7 @@ describe('list', () => {
             expectPrintedLines(
                 ' [ ] a',
                 ' [ ] b',
-                '-[ ] c'
+                '-[ ] c',
             );
 
             mockMoveCursor.mockClear();
@@ -282,7 +282,7 @@ describe('list', () => {
             expectPrintedLines(
                 '-[*] a',
                 ' [*] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             mockMoveCursor.mockClear();
@@ -307,7 +307,7 @@ describe('list', () => {
             expectPrintedLines(
                 '-[ ] a',
                 ' [*] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             mockMoveCursor.mockClear();
@@ -333,7 +333,7 @@ describe('list', () => {
             expectPrintedLines(
                 '-[*] a',
                 ' [ ] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             mockMoveCursor.mockClear();
@@ -360,7 +360,7 @@ describe('list', () => {
             expectPrintedLines(
                 ' [ ] a',
                 '-[ ] b',
-                ' [ ] c'
+                ' [ ] c',
             );
 
             mockMoveCursor.mockClear();
@@ -392,7 +392,7 @@ describe('list', () => {
             expectPrintedLines(
                 ' [ ] a',
                 ' [ ] b',
-                '-[ ] c'
+                '-[ ] c',
             );
             expect(mock).toBeCalledWith({
                 index: 0, setIndex: expect.any(Function),
@@ -425,7 +425,7 @@ describe('list', () => {
             expectPrintedLines(
                 '-[ ] a',
                 ' [ ] b',
-                ' [*] c'
+                ' [*] c',
             );
             expect(mock).toBeCalledWith({
                 index: 0, setIndex: expect.any(Function),
