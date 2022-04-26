@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DmitryBogomolov/cli-list-select.svg?branch=master)](https://travis-ci.org/DmitryBogomolov/cli-list-select)
+[![CI](https://github.com/DmitryBogomolov/cli-list-select/actions/workflows/ci.yml/badge.svg)](https://github.com/DmitryBogomolov/cli-list-select/actions/workflows/ci.yml)
 
 # cli-list-select
 
