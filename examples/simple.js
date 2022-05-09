@@ -7,7 +7,7 @@ const items = ['A', 'B', 'C', 'D', 'E'];
 console.log('* Items *');
 list(items).then(
     ({ checks }) => {
-        console.log(checks.map(i => items[i]).join(', '));
+        console.log(checks.map((i) => items[i]).join(', '));
     },
     (err) => {
         console.error(err);

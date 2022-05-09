@@ -34,7 +34,7 @@ describe('list', () => {
     }
 
     function expectPrintedLines(...lines) {
-        expect(mockWrite.mock.calls).toEqual(lines.map(line => [`${line}\n`]));
+        expect(mockWrite.mock.calls).toEqual(lines.map((line) => [`${line}\n`]));
     }
 
     function expectClearedLines(count) {

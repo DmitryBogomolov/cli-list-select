@@ -22,7 +22,7 @@ const options = {
 console.log('* Items *');
 list(items, options).then(
     ({ checks }) => {
-        console.log(checks.map(i => items[i].text).join(', '));
+        console.log(checks.map((i) => items[i].text).join(', '));
     },
     (err) => {
         console.error(err);

@@ -29,7 +29,7 @@ const options = {
 console.log('* Items *');
 list(items, options).then(
     ({ checks }) => {
-        console.log(checks.map(i => items[i]).join(', '));
+        console.log(checks.map((i) => items[i]).join(', '));
     },
     (err) => {
         console.error(err);
